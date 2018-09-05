@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/lindellcarternyc/metric-imp-converter/issues"
   },
-  "homepage": "https://github.com/lindellcarternyc/metric-imp-converter#readme"
+  "homepage": "https://github.com/lindellcarternyc/metric-imp-converter#readme",
+  "devDependencies": {
+    "@types/jest": "^23.3.1",
+    "@types/node": "^10.9.4",
+    "jest": "^23.5.0",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.0.3"
+  }
 }
