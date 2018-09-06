@@ -1,9 +1,9 @@
 import api from '../src/api'
-import { Output } from '../src/types' 
+import { APIResponseData } from '../src/types' 
 
 interface Test {
   input: string,
-  expected: Output
+  expected: APIResponseData
 }
 
 let json: jest.Mock
