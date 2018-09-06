@@ -1,41 +1,23 @@
-const parseInput = (input: string): { amount: number, unit: string }  => {
-  const validUnitRegex = /(gal|lbs|mi|L|km|kg)$/
-  const unitMatch = validUnitRegex.exec(input)
-  
-  let unit: string | undefined
+import getAmount from './get-amount'
+import getUnit from './get-unit'
+import { Unit } from './types'
 
-  if ( unitMatch === null ) {
-    unit = undefined
-  } else {
-    unit = unitMatch[0]
-  } 
+const parseInput = (input: string): { amount: number, unit: Unit }  => {
+  const unit = getUnit(input)
+  let amount: number | null = null
 
-  const amountInput = input.replace(unit || /\D*$/, '')
-  const validNumberRegex = /^\d+(\.\d+)?(\/\d+(\.\d+)?)?$/
-  
-  let amount: number | undefined
-  if ( amountInput.length === 0 ) {
-    amount = 1
-  } else if ( validNumberRegex.test(amountInput) === true ) {
-    const [num, den] = amountInput.split('/').map(ipt => parseFloat(ipt))
-    if ( den !== undefined ) {
-      amount = num / den
-    } else {
-      amount = num
-    }
+  if ( unit === null ) {
+    amount = getAmount(input)
   } else {
-    amount = undefined
+    amount = getAmount(input, unit.shortName)
   }
 
-  if ( unit === undefined ) {
-    if ( amount === undefined ) {
-      throw new Error('invalid number and unit')
-    }
+  if ( unit === null ) {
+    if ( amount === null ) { throw new Error('invalid number and unit') }
     throw new Error('invalid unit')
-  } else if ( amount === undefined ) {
-    throw new Error('invalid number')
   }
-  
+  if ( amount === null ) { throw new Error('invalid number') }
+
   return { amount, unit }
 }
 
