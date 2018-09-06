@@ -2,10 +2,13 @@
   "name": "metric-imp-converter",
   "version": "1.0.0",
   "description": "A metric/imperial unit converter",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest",
-    "watch:tests": "jest --watch"
+    "watch:tests": "jest --watch",
+    "watch:src": "tsc --watch",
+    "compile": "tsc",
+    "start": "tsc & node lib/index.js"
   },
   "repository": {
     "type": "git",
