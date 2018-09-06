@@ -10,7 +10,7 @@ describe('parse-input', () => {
     validUnits.forEach(validUnit => {
       it(`recognizes ${validUnit}`, () => {
         const { unit } = parseInput(validUnit)
-        expect(unit).toBe(validUnit)
+        expect(unit.shortName).toBe(validUnit)
       })
     })
   })
@@ -75,10 +75,11 @@ describe('parse-input', () => {
       }
     ]
 
-    tests.forEach(test => {
-      it(`recognizes ${test.input}`, () => {
-        const parsed = parseInput(test.input)
-        expect(parsed).toEqual(test.expected)
+    tests.forEach(({input, expected}) => {
+      it(`recognizes ${input}`, () => {
+        const parsed = parseInput(input)
+        expect(parsed.amount).toEqual(expected.amount)
+        expect(parsed.unit.shortName).toEqual(expected.unit)
       })
     })
   })
