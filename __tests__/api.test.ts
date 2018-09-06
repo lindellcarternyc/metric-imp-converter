@@ -1,11 +1,9 @@
 import api from '../src/api'
+import { Output } from '../src/types' 
 
 interface Test {
   input: string,
-  expected: {
-    initUnit: string,
-    initNum: number
-  }
+  expected: Output
 }
 
 let json: jest.Mock
@@ -57,13 +55,19 @@ describe('api', () => {
     input: '12L',
     expected: {
       initNum: 12,
-      initUnit: 'L'
+      initUnit: 'L',
+      returnUnit: 'gal',
+      returnNum: 12 / 3.78541,
+      string: `12 liters converts to ${12 / 3.78541} gallons`
     }
   }, {
     input: '123/8.4mi',
     expected: {
       initNum: 123/8.4,
-      initUnit: 'mi'
+      initUnit: 'mi',
+      returnUnit: 'km',
+      returnNum: 123/8.4*1.60934,
+      string: `${123/8.4} miles converts to ${123/8.4*1.60934} kilometers`
     }
   }]
 
