@@ -11,6 +11,7 @@ interface APIRequest {
 interface ApiResponse {
   json: (data: {}) => void
   send: (message: string) => void
+  status: (code: number) => void
 }
 
 const api = (req: APIRequest, res: ApiResponse) => {
@@ -29,6 +30,7 @@ const api = (req: APIRequest, res: ApiResponse) => {
     }
     return res.json(data)
   } catch (err) {
+    res.status(300)
     return res.send(err.message)
   }
 }
