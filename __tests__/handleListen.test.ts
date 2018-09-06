@@ -1,6 +1,6 @@
 import handleListen from '../src/handleListen'
 
-describe.skip('handleListen', () => {
+describe('handleListen', () => {
   it('should call log with the correct port', () => {
     const PORT = 3000
     const log = jest.fn()
