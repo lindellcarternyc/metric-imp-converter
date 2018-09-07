@@ -8,12 +8,14 @@ interface Test {
 
 let json: jest.Mock
 let send: jest.Mock
-let res: { json: jest.Mock, send: jest.Mock }
+let status: jest.Mock
+let res: { json: jest.Mock, send: jest.Mock, status: jest.Mock }
 
 beforeEach(() => {
   json = jest.fn()
   send = jest.fn()
-  res = { json, send }
+  status = jest.fn()
+  res = { json, send, status }
 })
 
 describe('api', () => {

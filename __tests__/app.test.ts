@@ -60,7 +60,7 @@ describe('app', () => {
     it('rejects invalid input: ' + input, (done) => {
       supertest(app)
       .get(API_ENDPOINT + input)
-      .expect(200, expected)
+      .expect(300, expected)
       .end(err => {
         if ( err ) { throw done(err) }
         done()
